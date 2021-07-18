@@ -1,19 +1,36 @@
 import "./styles.css";
 import { useState } from "react";
 
-export default function App() {
-  const [likeCounter, setLikeCounter] = useState(0);
+const emojiDictionary = {
+  "😊": "Smiling",
+  "😳": "disbelief",
+  "😔": "sad",
+  "🥡": "takeout box",
+  "❤️": "love",
+  "😑": "annoyance"
+};
 
-  function clickChangeHandler() {
-    abc = likeCounter + 1;
-    // console.log("clicked", likeCounter);
-    setLikeCounter(abc);
+export default function App() {
+  var [emoji, setEmoji] = useState("");
+  var [meaning, setMeaning] = useState("Emoji's");
+
+  function changeHandler(event) {
+    var inputEmoji = event.target.value;
+    setEmoji(inputEmoji);
+
+    if (inputEmoji in emojiDictionary) {
+      setMeaning(emojiDictionary[inputEmoji]);
+    } else {
+      setMeaning("Not in our Database");
+    }
   }
 
   return (
     <div className="App">
       <h1>inside outttt</h1>
-      <button onClick={clickChangeHandler}> click me! </button> {likeCounter}
+      <input onChange={changeHandler} />
+      <div> {emoji} </div>
+      <div> {meaning} </div>
     </div>
   );
 }
