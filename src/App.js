@@ -37,22 +37,15 @@ export default function App() {
       <input onChange={changeHandler} />
       <div> {emoji} </div>
       <div> {meaning} </div>
-      {
-        /** Bonus feature; if time permmits */
-        /**
-         * concepts to cover: mapping a list
-         * click handler on list item
-         */
-        emojis.map((emoji) => (
-          <span
-            onClick={() => emojiClickHandler(emoji)}
-            style={{ fontSize: "2rem", padding: "0.5rem", cursor: "pointer" }}
-          >
-            {" "}
-            {emoji}{" "}
-          </span>
-        ))
-      }
+      {emojis.map((emoji) => (
+        <span
+          onClick={() => emojiClickHandler(emoji)}
+          style={{ fontSize: "2rem", padding: "0.5rem", cursor: "pointer" }}
+        >
+          {" "}
+          {emoji}{" "}
+        </span>
+      ))}
     </div>
   );
 }
